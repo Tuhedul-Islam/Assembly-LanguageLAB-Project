@@ -1,0 +1,17 @@
+.STACK 100H
+.MODEL SMALL
+.DATA
+.CODE
+MAIN PROC
+    MOV AH,1
+    
+    INPUT:
+    INT 21H
+    CMP AL,'a'
+    JE END
+    JMP INPUT
+    
+    END:
+    
+    MAIN ENDP
+END MAIN

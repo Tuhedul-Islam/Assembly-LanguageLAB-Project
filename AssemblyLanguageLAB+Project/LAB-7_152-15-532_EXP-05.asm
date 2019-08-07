@@ -1,0 +1,31 @@
+.STACK 100H
+.MODEL SMALL
+.DATA
+VALUE DB ?
+.CODE
+MAIN PROC  
+    MOV VALUE,'0'    
+    MOV AH,1    
+    INT 21H
+    
+    WHILE:
+    CMP AL,0DH    
+    JE END_WHILE
+    INC VALUE
+    INT 21H    
+    JMP WHILE
+       
+    
+    END_WHILE:
+    MOV AH,2
+    MOV DL,0AH
+    INT 21H
+    MOV DL,0DH
+    INT 21H
+    
+    MOV AH,2
+    MOV DL,VALUE
+    INT 21H
+
+    MAIN ENDP
+END MAIN
